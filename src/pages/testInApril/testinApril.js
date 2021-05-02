@@ -121,7 +121,6 @@ function TestInApril() {
       <button onClick={showCallResults}>Call</button>
       <button onClick={clozuar}>FullName</button>
       <button onClick={wrappedResult}>Logging Name</button>
-      <span></span>
     </div>
   );
 }
