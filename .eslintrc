@@ -1,0 +1,16 @@
+{
+    "extends": [
+      "eslint-config-airbnb-base",  
+      "react-app",
+      "prettier"
+    ],
+    "rules": {
+      "jsx-quotes": [
+        1,
+        "prefer-double"
+      ]
+    },
+    "plugins": [
+      "prettier"
+    ]
+}

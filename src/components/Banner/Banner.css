@@ -1,0 +1,53 @@
+.bannerContainer {
+    background: #48403d;
+  }
+  
+  .banner {
+    width: 800px;
+    height: 394px;
+    background: url("../../images/banner.jpg");
+    /* background: url('https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/8/shutterstock_199419065.jpg'); */
+    margin-left: 23%
+  }
+  
+  .firstTitle {
+    color: white;
+    font-size: xxx-large;
+    font-weight: 600;
+    top: -11px;
+    position: relative;
+    left: 118px;
+  }
+  
+  .firstSentance {
+    font-size: 18px;
+    top: -43px;
+    position: relative;
+    font-weight: 100;
+    left: 7px;
+  }
+  
+  .secondSentance {
+    font-size: 18px;
+    top: -43px;
+    position: relative;
+    font-weight: 100;
+    left: 60px;
+  }
+  
+  .cyanbutton {
+    position: relative;
+    top: 220px;
+    background: #1cba9c;
+    border: none;
+    color: white;
+    left: 355px;
+    font-size: 17px;
+    padding: 5px;
+  } 
+  
+  .arrowimg {
+    top: 30px;
+    left: 392px;
+    position: relative;
+  }

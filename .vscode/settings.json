@@ -1,0 +1,22 @@
+{
+    "editor.formatOnSave": true,
+    "[javascript]": {
+      "editor.formatOnSave": false
+    },
+    "editor.formatOnPaste": false,
+    "javascript.format.enable": false,
+    "javascript.validate.enable": false,
+    "files.associations": {
+      "*.jsx": "javascriptreact",
+      "*.js": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        
+
+      "javascript": "jsx"
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "prettier.disableLanguages": ["js"],
+  }

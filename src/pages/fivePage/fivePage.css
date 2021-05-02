@@ -1,0 +1,24 @@
+.root {
+    position: relative;
+}
+
+.icons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 870px;
+    justify-content: center;
+    margin-left: 20px;
+}
+  
+.imgIcons {
+    margin-bottom: 19px;
+    margin-right: 19px;
+}
+  
+.iconSentance {
+    display: flex;
+    justify-content: center;
+    font-size: xxx-large;
+    color: #66756d;
+    font-family: cursive;
+}

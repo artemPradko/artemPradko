@@ -1,0 +1,33 @@
+.calculationRoot {
+    width: 150px;
+}
+
+.calculationContainer {
+    display: flex;
+    margin-top: 20px;
+    width: 200px;
+    margin-left: 20px;
+}
+
+.leftContainer {
+   display: block;
+}
+
+.rightContainer {
+    display: block;
+}
+
+.calculationButtons {
+    background: greenyellow;
+    border: none;
+    width: 75px;
+    height: 23px;
+    margin-right: 14px;
+    margin-left: 4px;
+    color: darkred;
+}
+
+.values {
+    height: 25px;
+    margin-bottom: 8px;
+}

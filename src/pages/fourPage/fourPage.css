@@ -1,0 +1,17 @@
+.root {
+    position: relative;
+}
+
+.itsWorkersImg {
+   display: flex;
+   color: white;
+   justify-content: space-evenly;
+}
+  
+.itsWorkersSentance {
+   display: flex;
+   justify-content: center;
+   font-size: xxx-large;
+   font-family: cursive;
+   color: #a2a2a2;
+}

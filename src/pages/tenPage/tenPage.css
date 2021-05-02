@@ -1,0 +1,19 @@
+.root {
+    position: relative;
+}
+
+.header {
+    font-family: cursive; 
+    font-size: xxx-large; 
+    display: flex; 
+    justify-content: center;
+    color: #66756d;
+}
+
+.numbers {
+    font-size: xx-large; 
+    font-family: cursive; 
+    display: flex; 
+    justify-content: center; 
+    color: #66756d;
+}

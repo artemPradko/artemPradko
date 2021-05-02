@@ -1,0 +1,11 @@
+.firstpage {
+    font-size: xx-large;
+    display: flex;
+    color: #929292;
+    font-family: cursive;
+}
+  
+.oficce {
+    display: flex;
+    justify-content: center;
+}

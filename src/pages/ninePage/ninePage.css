@@ -1,0 +1,32 @@
+.root {
+    position: relative;
+}
+
+.photo {
+    display: flex;
+    justify-content: center;
+}
+
+.aboutSentences {
+    display: block;
+    background: white;
+    color: #66756d;
+    margin-top: -29px;
+}
+
+
+.name {
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    font-family: cursive;
+    height: 4px;
+}
+
+.job {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+    font-family: cursive;
+    height: 4px;
+}

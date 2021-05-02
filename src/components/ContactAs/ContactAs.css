@@ -1,0 +1,86 @@
+.contactIntput {
+    color: #bfbfbf;
+    width: 225px; 
+    height: 25px; 
+    margin-right: 19px; 
+    margin-bottom: 20px; 
+    font-family: monospace;
+}
+
+.fitBack {
+    width: 480px;
+    height: 184px; 
+    color:  gray; 
+    font-family: monospace;
+}
+
+.rootContactInformatoinContainer {
+    margin-bottom: 19px;
+}
+  
+.headerContactSentance {
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    height: 10px;
+}
+  
+.headerSentenceTwo {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+  
+.rootContactSentance {
+    color: #66756d;
+}
+
+.fidBackContainer {
+    display: inline-flex;
+}
+
+.innerFidBackContainer {
+    margin-left: 48%;
+}
+  
+.yourNameEmail {
+    display: inline-flex;
+}
+  
+.information {
+    height: 29px;
+    font-size: 14px;
+    width: 208px;
+    font-family: serif;
+   margin-top: 2px;
+}
+  
+.formInformation {
+    height: 0px;
+    font-size: 14px;
+    width: 208px;
+    font-family: monospace;
+}
+  
+.endButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-right: 9px;
+}
+  
+.endButton {
+    border: none;
+    background: #1abc9b;
+    margin-right: 9px;
+    font-size: 12px;
+    color: white;
+    width: 88px;
+    height: 29px;
+}
+
+.copyright {
+    background: #2d3e50;
+    color: white;
+    padding: 27px;
+}

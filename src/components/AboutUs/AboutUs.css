@@ -1,0 +1,66 @@
+.rootAboutUs {
+    display: flex;
+    justify-content: center;
+    font-size: 34px;
+    background: #1abc9b;
+    color: white;
+}
+  
+.innerAboutUs {
+    display: flex;
+}
+  
+.aboutUs {
+    display: flex;
+    justify-content: center;
+    height: 9px;
+}
+  
+.aboutSentence {
+    font-size: 15px;
+    height: 70px;
+}
+  
+.imgAbout {
+    display: flex;
+    background: #1abc9b;
+    color: white;
+    justify-content: space-evenly;
+    height: 445px;
+}
+  
+.headerSentence {
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+    height: 0px;
+}
+  
+.innerHeaderSentence {
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    height: 8px;
+}
+  
+.aboutSentences {
+    display: block;
+    background: white;
+    color: #66756d;
+    margin-top: -29px;
+}
+  
+.sentenceAboutUs {
+    display: flex;
+    /* justify-content: center; */
+    font-size: 14px;
+    margin-left: 11px;
+    height: 5px;
+}
+  
+.endSentenceAboutUs {
+    display: flex;
+    /* justify-content: center; */
+    font-size: 14px;
+    margin-left: 11px;
+}

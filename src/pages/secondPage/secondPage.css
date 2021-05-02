@@ -1,0 +1,23 @@
+.root {
+    position: relative;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.e-mail {
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-size: xxx-large;
+}
+
+.emailjpg {
+    width: 485px;
+}
+
+.iconEmail {
+    width: 244px;
+}

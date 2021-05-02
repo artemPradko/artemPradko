@@ -1,0 +1,49 @@
+.rootBigButtonContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+.innerButtonContainer {
+    width: 703px;
+  }
+  
+.bigButtonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 870px;
+  }
+  
+.headerTwo {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    color: #66756d;
+    height: 13px;
+  }
+  
+.sentance {
+    color: #66756d;
+    display: flex;
+    justify-content: center;
+    height: 32px;
+  }
+  
+.photos {
+    margin-right: 19px;
+    margin-bottom: 19px;
+  }
+  
+.cyanButtons {
+    display: flex;
+    justify-content: center;
+    height: 34px;
+    margin-bottom: 19px;
+  }
+  
+.Buttons {
+    border: none;
+    background: #1abc9b;
+    margin-right: 9px;
+    font-size: 11px;
+    color: white;
+  }

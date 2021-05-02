@@ -1,0 +1,21 @@
+.root {
+    position: relative;
+}
+
+.imgResyme {
+  display: flex;
+  justify-content: center;
+}
+
+.myLogo {
+    width: 385px;
+}
+
+.resymeSentance {
+  font-size: x-large;
+  font-weight: 900;
+  font-family: cursive;
+  display: flex;
+  justify-content: center;
+  color: #66756d;
+}
