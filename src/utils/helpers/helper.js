@@ -52,10 +52,10 @@ function checkAge(age) {
   //      return b;
   // }
 
-  const ask = (question, yes, no) => {
-    if (confirm(question)) yes();
-    else no();
-  };
+  // const ask = (question, yes, no) => {
+  //   if (confirm(question)) yes();
+  //   else no();
+  // };
 }
 
 const mockData = {
