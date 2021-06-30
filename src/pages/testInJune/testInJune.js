@@ -21,8 +21,7 @@ function SwapyPage() {
  const submit = useCallback(() => {
   async function getHero(heroId) {
     const response = await fetch(
-      'https://swapi.dev/documentation#people/',
-      [ hero ]
+      `https://swapi.dev/documentation#people/${heroId}`
     );
 
     const data = await response.json()
