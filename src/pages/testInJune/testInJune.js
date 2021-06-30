@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './testInJune.css';
 
-function Result() {
+function SwapyPage() {
 
   const [heroId, setHeroId] = useState(1);
 
@@ -18,28 +18,28 @@ function Result() {
     });
   }, []);
 
- const wrap = useCallback(() => {
-  async function viewHero(hero) {
-    const heroUrl = await fetch(
+ const submit = useCallback(() => {
+  async function getHero(heroId) {
+    const response = await fetch(
       'https://swapi.dev/documentation#people/',
-      hero
+      [ hero ]
     );
-    const alertHero = console.info(heroUrl(hero));
+
+    const data = await response.json()
   
-    
+   
   }
- })
 
-
-
+  getHero(setHeroId)
+ }, []);
 
 return (
   <div>
-    <input name="setHero" onChange={onChange} type="text" />
-    <button>Show</button>
+    <input name="setHero" onChange={onChange} type="text" value={setHeroId} />
+    <button onClick={submit}>Show</button>
   </div>
 );
 
 }
 
-export default Result;
+export default SwapyPage;
