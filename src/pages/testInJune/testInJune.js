@@ -14,30 +14,28 @@ function SwapyPage() {
         ...prevState,
         [name]: value,
       };
-      return newheroId;
+      return newHeroId;
     });
   }, []);
 
- const submit = useCallback(() => {
-  async function getHero(heroId) {
-    const response = await fetch(
-      `https://swapi.dev/documentation#people/${heroId}`
-    );
+  const submit = useCallback(() => {
+    async function getHero(heroId) {
+      const response = await fetch(`https://swapi.dev/api/people/${heroId}`);
 
-    const data = await response.json()
-  
-   
-  }
 
-  getHero(setHeroId)
- }, []);
+      const data = await response.json();
 
-return (
-  <div>
-    <input name="setHero" onChange={onChange} type="text" value={setHeroId} />
-    <button onClick={submit}>Show</button>
-  </div>
-);
+    }
+
+    getHero(setHeroId)
+  }, []);
+
+  return (
+    <div>
+      <input name="setHero" onChange={onChange} type="text" value={setHeroId} />
+      <button onClick={submit}>Show</button>
+    </div>
+  );
 
 }
 
