@@ -82,10 +82,10 @@ function Result() {
         onChange={onChange}
         value={data.second}
       />
-      <button onClick={showCalculation}>showCalculation</button>
+      <button type="button" onClick={showCalculation}>showCalculation</button>
       <input type="text" name="third" onChange={onChange} value={data.third} />
       <input type="text" name="fourth" onChange={onChange} value={data.fourth} /> 
-      <button onClick={showConcatination}>showConcatination</button>
+      <button type="button" onClick={showConcatination}>showConcatination</button>
     </div>
   );
 }
