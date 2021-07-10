@@ -39,11 +39,11 @@ children.prototype = parent;
 
 // const copyMyClassName = new MyClass('Maxim', 'Logvyniuk')
 
-const viewMetod = (a) => {
-  console.info(a);
+// const viewMetod = (a) => {
+//   console.info(a);
 
-  return false;
-};
+//   return false;
+// };
 
 export class Worker {
   calculationResult: null;

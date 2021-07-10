@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
+// eslint-disable-next-line import/named
 import { Worker } from '../../utils/helpers';
 
 const viewMetod = (a) => {
@@ -67,10 +68,10 @@ function Result() {
   }, [data]);
 
   const showConcatination = useCallback(() => {
-      console.info('string -', data);
-      workerTask.concantination(String(data.third), String(data.fourth));
-      return workerTask.showConcatinationResult();
-  }, [data])
+    console.info('string -', data);
+    workerTask.concantination(String(data.third), String(data.fourth));
+    return workerTask.showConcatinationResult();
+  }, [data]);
 
   return (
     <div>
@@ -82,10 +83,19 @@ function Result() {
         onChange={onChange}
         value={data.second}
       />
-      <button type="button" onClick={showCalculation}>showCalculation</button>
+      <button type="button" onClick={showCalculation}>
+        showCalculation
+      </button>
       <input type="text" name="third" onChange={onChange} value={data.third} />
-      <input type="text" name="fourth" onChange={onChange} value={data.fourth} /> 
-      <button type="button" onClick={showConcatination}>showConcatination</button>
+      <input
+        type="text"
+        name="fourth"
+        onChange={onChange}
+        value={data.fourth}
+      />
+      <button type="button" onClick={showConcatination}>
+        showConcatination
+      </button>
     </div>
   );
 }

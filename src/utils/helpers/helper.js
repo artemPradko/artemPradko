@@ -1,8 +1,8 @@
-const initials = {
-  name: 'Artem',
-  born: 2010,
-  goToSchool: 2016,
-};
+// const initials = {
+//   name: 'Artem',
+//   born: 2010,
+//   goToSchool: 2016,
+// };
 
 const initials2 = {
   name: 'Jonn',
@@ -37,26 +37,26 @@ const dataToDisplay = personalDescription(initials2);
 
 console.info(dataToDisplay.wereIGoToSchool);
 
-function checkAge(age) {
-  //   const comfirmation = confirm('Родители разрешили?');
-  //   const checkAge2 = age > 18 ? true : comfirmation;
+// function checkAge(age) {
+//   const comfirmation = confirm('Родители разрешили?');
+//   const checkAge2 = age > 18 ? true : comfirmation;
 
-  //   return checkAge2;
-  //  return (age > 18) || confirm('Родители разрешили?')
-  // }
+//   return checkAge2;
+//  return (age > 18) || confirm('Родители разрешили?')
+// }
 
-  // function min(a, b) {
-  //     if (a > b) {
-  //        return a
-  //     }
-  //      return b;
-  // }
+// function min(a, b) {
+//     if (a > b) {
+//        return a
+//     }
+//      return b;
+// }
 
-  // const ask = (question, yes, no) => {
-  //   if (confirm(question)) yes();
-  //   else no();
-  // };
-}
+// const ask = (question, yes, no) => {
+//   if (confirm(question)) yes();
+//   else no();
+// };
+// }
 
 const mockData = {
   title: 'Robot',
@@ -92,19 +92,22 @@ const dataCounter = (type, a, b, c) => {
     box.thirt = c.toString();
   }
 
+  const maxValue = 4;
+
   if (a > 0 && b > 0 && c > 0) {
     return a * b * c;
   }
   if (a < 0 || b < 0 || c < 0) {
     return a * c + b;
   }
-  if ((a > 0 && a === 4) || b >= 4) {
+  if ((a > 0 && a === maxValue) || b >= maxValue) {
     return a * b;
   }
 
   return false;
 };
 
+// eslint-disable-next-line no-magic-numbers
 dataCounter('count', 9, 1, 4);
 
 getDetails(mockData);

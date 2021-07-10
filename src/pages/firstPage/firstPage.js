@@ -9,12 +9,12 @@ function FirstPage() {
   return (
     <div>
       <Link to="/"></Link>
-      <div class="root">
-        <div class="oficce">
+      <div className="root">
+        <div className="oficce">
           <img src={office} alt="ofice" />
         </div>
-        <div class="firstpage">
-          <p class="firstOne">Bac-One Company</p>
+        <div className="firstpage">
+          <p className="firstOne">Bac-One Company</p>
           <p>12345 Hollywood Bvid Street</p>
           <p>Los Angeles, California</p>
         </div>

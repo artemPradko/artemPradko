@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from '../../images/logo.png';
@@ -47,7 +47,8 @@ function Header() {
               <Link to="/testInMarch">TestInMarch</Link>
               <Link to="/testInApril">TestInApril</Link>
               <Link to="/testInMay">TestInMay</Link>
-              <Link to="/testInJune">TestInJune</Link> 
+              <Link to="/testInJune">TestInJune</Link>
+              <Link to="/starWarsPlanet">StarWarsPlanet</Link>
               <Link to="/calculation">Calculation</Link>
             </div>
           </div>

@@ -37,7 +37,7 @@ function BigButton() {
         <button className="Buttons">FLAT DESIGN</button>
       </div>
       <audio id="audio" autoPlay controls hidden={!isAudioShown} />
-      <div class="bigButtonContainer">
+      <div className="bigButtonContainer">
         <input
           alt="photos"
           className="photos"

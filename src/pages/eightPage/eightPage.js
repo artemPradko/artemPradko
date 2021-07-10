@@ -13,9 +13,9 @@ function EightPage() {
         <div className="img3">
           <img src={img3} alt="img3" />
         </div>
-        <div class="aboutSentences">
+        <div className="aboutSentences">
           <p className="name">Jonnie Doe</p>
-          <p className="job">IT'S Graphic Designer</p>
+          <p className="job">ITS Graphic Designer</p>
         </div>
       </div>
     </div>

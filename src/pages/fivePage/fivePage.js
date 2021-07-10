@@ -25,7 +25,7 @@ function FivePage() {
           <img className="imgIcons" src={photos} alt="icon7" />
           <img className="imgIcons" src={audio} alt="icon8" />
         </div>
-        <p className="iconSentance">It's ICONS </p>
+        <p className="iconSentance">Its ICONS </p>
       </div>
     </div>
   );
