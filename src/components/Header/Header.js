@@ -49,6 +49,7 @@ function Header() {
               <Link to="/testInMay">TestInMay</Link>
               <Link to="/testInJune">TestInJune</Link>
               <Link to="/starWarsPlanet">StarWarsPlanet</Link>
+              <Link to="/starWarsStarships">StarWarsStarships</Link>
               <Link to="/calculation">Calculation</Link>
             </div>
           </div>

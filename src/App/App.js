@@ -19,6 +19,7 @@ import TestInApril from '../pages/testInApril/testinApril';
 import TestInMay from '../pages/testInMay/testInMay';
 import TestInJune from '../pages/testInJune/testInJune';
 import StarWarsPlanet from '../pages/starWarsPlanets/starWarsPlanets';
+import StarWarsStarships from '../pages/starWarsStarships/starWarsStarships';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/testInMay" component={TestInMay} />
         <Route path="/testInJune" component={TestInJune} />
         <Route path="/starWarsPlanet" component={StarWarsPlanet} />
+        <Route path="/starWarsStarships" component={StarWarsStarships} />
         <Route path="/calculation" component={Calculation} />
       </Switch>
     </BrowserRouter>
