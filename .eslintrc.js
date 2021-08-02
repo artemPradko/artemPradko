@@ -104,7 +104,7 @@ module.exports = {
     'react/boolean-prop-naming': 'error',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
     'react/jsx-handler-names': 'error',
-    'react/jsx-no-bind': 'error',
+    'react/jsx-no-bind': 'off',
     'react/no-direct-mutation-state': 'error',
     'react/prefer-stateless-function': [
       'error',
@@ -112,6 +112,7 @@ module.exports = {
     ],
     'react/state-in-constructor': ['error', 'never'],
     'react/static-property-placement': ['error', 'static public field'],
+    'react-perf/jsx-no-new-object-as-prop': 'off',
     'require-await': 'error',
     // 'unicorn/filename-case': [
     //   'error',
@@ -142,5 +143,13 @@ module.exports = {
     'react/jsx-no-literals': 'off',
     'jest/no-large-snapshots': 'off',
     'react/jsx-max-depth': ['error', { max: 5 }],
+    'react/prop-types': 'off',
+    'react-perf/jsx-no-new-function-as-prop': 'off',
+    'no-unused-vars': 'warn',
+    'no-template-curly-in-string': 'warn',
+    'no-nested-ternary': 'warn',
+    'no-undef': 'warn',
+    'consistent-return': 'off',
+    'no-sequences': 'warn',
   },
 };
