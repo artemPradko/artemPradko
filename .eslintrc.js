@@ -151,5 +151,7 @@ module.exports = {
     'no-undef': 'warn',
     'consistent-return': 'off',
     'no-sequences': 'warn',
+    'no-restricted-globals': 'warn',
+    'prefer-const': 'warn',
   },
 };

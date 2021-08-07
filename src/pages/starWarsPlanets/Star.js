@@ -7,8 +7,6 @@ import React, {
 } from 'react';
 import { Link } from 'react-router-dom';
 
-import './planetDescription.css';
-
 import s from './starWarsPlanet.module.scss';
 
 const slides = [
@@ -95,7 +93,7 @@ const initialState = {
   slideIndex: 0,
 };
 
-const slidesReducer = (state, event) => {
+const slidesReducer = (state, event, setSlides) => {
   if (event.type === 'NEXT') {
     console.info('slidesReducer ---', state);
     return {
@@ -150,7 +148,7 @@ function Slide({ slide, offset }) {
 
 function PlanetPage() {
   const [slidesState, setSlides] = useState(slides);
-  const [state, dispatch] = useReducer(slidesReducer, initialState);
+  const [state, dispatch] = useReducer(slidesReducer, slidesState);
 
   const [planetId, setPlanetId] = useState(1);
 
@@ -161,7 +159,7 @@ function PlanetPage() {
     setPlanetId(value);
   }, []);
 
-  const submit = useCallback(async () => {
+  const submit = useCallback(() => {
     async function getPlanet(starPlanetId) {
       const response = await fetch(
         `https://swapi.dev/api/planets/${starPlanetId}`
@@ -182,7 +180,7 @@ function PlanetPage() {
       setPlanetData(dataWithImg);
     }
 
-    await getPlanet(planetId);
+    getPlanet(planetId);
   }, [planetId]);
 
   const onClick = useCallback(
@@ -257,89 +255,73 @@ function PlanetPage() {
 
   return (
     <>
-      <div className={s.container}>
-        <div className="searchPlanetRoot">
-          <div className="s-p-heroIsRoot">
-            <Link className="s-p-link" to="/">
-              Back
-            </Link>
-            <input
-              className="s-p-searching"
-              name="setHero"
-              onChange={onChange}
-              type="number"
-              placeholder="Search"
-              value={planetId}
-            />
-            <button className="s-p-submitButton" onClick={submit}>
-              Show
-            </button>
+      <div className="s-p-heroIsRoot">
+        <Link className="s-p-link" to="/">
+          Back
+        </Link>
+        <input
+          className="s-p-searching"
+          name="setHero"
+          onChange={onChange}
+          type="number"
+          placeholder="Search"
+          value={planetId}
+        />
+        <button className="s-p-submitButton" onClick={submit}>
+          Show
+        </button>
+      </div>
+      {planetData && (
+        <div className="s-p-descriptionAndImg">
+          <div className="s-p-image">
+            <img src={planetData?.image} alt="Planet Image" />
           </div>
-          {planetData && (
-            <div className="s-p-descriptionAndImg">
-              <div className="s-p-image">
-                <img src={planetData?.image} alt="Planet Image" />
-              </div>
-              <div className="s-p-descriptionContainer">
-                <span className="s-p-name">{planetData?.name}</span>
-                <div className="s-p-description">
-                  <span className="s-p-details">Description</span>
-                  <span className="s-p-rotationPeriod">
-                    RotationPeriod: {planetData?.rotation_period}
-                  </span>
-                  <span className="s-p-residents">
-                    Residents: {planetData?.residents}
-                  </span>
-                  <span className="s-p-orbitalPeriod">
-                    OrbitalPeriod: {planetData?.orbital_period}
-                  </span>
-                  <span className="s-p-diameter">
-                    Diameter: {planetData?.diameter}
-                  </span>
-                  <span className="s-p-climate">
-                    Climate: {planetData?.climate}
-                  </span>
-                  <span className="s-p-gravity">
-                    Gravity: {planetData?.gravity}
-                  </span>
-                  <span className="s-p-terrain">
-                    Terrain: {planetData?.terrain}
-                  </span>
-                  <span className="s-p-surfaceWater">
-                    SurfaceWater: {planetData?.surface_water}
-                  </span>
-                  <span className="s-p-population">
-                    Population: {planetData?.population}
-                  </span>
-                </div>
-              </div>
+          <div className="s-p-descriptionContainer">
+            <span className="s-p-name">{planetData?.name}</span>
+            <div className="s-p-description">
+              <span className="s-p-details">Description</span>
+              <span className="s-p-rotationPeriod">
+                RotationPeriod: {planetData?.rotation_period}
+              </span>
+              <span className="s-p-residents">
+                Residents: {planetData?.residents}
+              </span>
+              <span className="s-p-orbitalPeriod">
+                OrbitalPeriod: {planetData?.orbital_period}
+              </span>
+              <span className="s-p-diameter">
+                Diameter: {planetData?.diameter}
+              </span>
+              <span className="s-p-climate">
+                Climate: {planetData?.climate}
+              </span>
+              <span className="s-p-gravity">
+                Gravity: {planetData?.gravity}
+              </span>
+              <span className="s-p-terrain">
+                Terrain: {planetData?.terrain}
+              </span>
+              <span className="s-p-surfaceWater">
+                SurfaceWater: {planetData?.surface_water}
+              </span>
+              <span className="s-p-population">
+                Population: {planetData?.population}
+              </span>
             </div>
-          )}
+          </div>
         </div>
-        <div className={s.slides}>
-          <button onClick={() => onClick('PREV')}>‹</button>
+      )}
+      <div className={s.slides}>
+        <button onClick={() => onClick('PREV')}>‹</button>
 
-          {[...slidesState, ...slidesState, ...slidesState].map((slide, i) => {
-            const offset = slides.length + (state.slideIndex - i);
-            return <Slide slide={slide} offset={offset} key={i} />;
-          })}
-          <button onClick={() => onClick('NEXT')}>›</button>
-        </div>
+        {[...slides, ...slides, ...slides].map((slide, i) => {
+          const offset = slides.length + (state.slideIndex - i);
+          return <Slide slide={slide} offset={offset} key={i} />;
+        })}
+        <button onClick={() => onClick('NEXT')}>›</button>
       </div>
     </>
   );
-
-  // return (
-  //   <div className={s.slides}>
-  //     <button onClick={() => dispatch({ type: 'PREV' })}>‹</button>
-
-  //     {[...slidesState, ...slidesState, ...slidesState].map((slide, i) => {
-  //       const offset = slides.length + (state.slideIndex - i);
-  //       return <Slide slide={slide} offset={offset} key={i} />;
-  //     })}
-  //     <button onClick={() => dispatch({ type: 'NEXT' })}>›</button>
-  //   </div>
-  // );
 }
 
 // function PlanetPage() {
