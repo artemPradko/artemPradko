@@ -7,8 +7,6 @@ import React, {
 } from 'react';
 import { Link } from 'react-router-dom';
 
-import './planetDescription.css';
-
 import s from './starWarsPlanet.module.scss';
 
 const slides = [
@@ -156,6 +154,8 @@ function PlanetPage() {
 
   const [planetData, setPlanetData] = useState(null);
 
+  const okResponseStatus = 200;
+
   const onChange = useCallback((event) => {
     const { value } = event.target;
     setPlanetId(value);
@@ -186,65 +186,78 @@ function PlanetPage() {
   }, [planetId]);
 
   const onClick = useCallback(
-    (type) => {
+    async (type) => {
       if (type === 'NEXT') {
-        setSlides((prevState) => {
-          const s1 = `https://starwars-visualguide.com/assets/img/planets/${Number(
+        const s1 = await fetch(
+          `https://starwars-visualguide.com/assets/img/planets/${Number(
             planetId
-          )}.jpg`;
-          const s2 = `https://starwars-visualguide.com/assets/img/planets/${
+          )}.jpg`
+        );
+        const s2 = await fetch(
+          `https://starwars-visualguide.com/assets/img/planets/${
             Number(planetId) + 1
-          }.jpg`;
-          const s3 = `https://starwars-visualguide.com/assets/img/planets/${
+          }.jpg`
+        );
+        const s3 = await fetch(
+          `https://starwars-visualguide.com/assets/img/planets/${
             Number(planetId) + 2
-          }.jpg`;
+          }.jpg`
+        );
 
+        setSlides((prevState) => {
           const newState = [...prevState];
 
           newState[0] = {
             ...prevState[0],
-            image: s1,
+            image: s1.status === okResponseStatus ? s1.url : slides[0].image,
           };
 
           newState[1] = {
             ...prevState[1],
-            image: s2,
+            image: s2.status === okResponseStatus ? s2.url : slides[1].image,
           };
 
           newState[2] = {
             ...prevState[2],
-            image: s3,
+            image: s3.status === okResponseStatus ? s3.url : slides[2].image,
           };
 
           return newState;
         });
         dispatch({ type: 'NEXT' });
       } else {
-        setSlides((prevState) => {
-          const s1 = `https://starwars-visualguide.com/assets/img/planets/${
+        const s1 = await fetch(
+          `https://starwars-visualguide.com/assets/img/planets/${
             Number(planetId) - 2
-          }.jpg`;
-          const s2 = `https://starwars-visualguide.com/assets/img/planets/${
+          }.jpg`
+        );
+        const s2 = await fetch(
+          `https://starwars-visualguide.com/assets/img/planets/${
             Number(planetId) - 1
-          }.jpg`;
-          const s3 = `https://starwars-visualguide.com/assets/img/planets/${Number(
+          }.jpg`
+        );
+        const s3 = await fetch(
+          `https://starwars-visualguide.com/assets/img/planets/${Number(
             planetId
-          )}.jpg`;
+          )}.jpg`
+        );
+
+        setSlides((prevState) => {
           const newState = [...prevState];
 
           newState[0] = {
             ...prevState[0],
-            image: s1,
+            image: s1.status === okResponseStatus ? s1.url : slides?.[0].image,
           };
 
           newState[1] = {
             ...prevState[1],
-            image: s2,
+            image: s2.status === okResponseStatus ? s2.url : slides?.[1].image,
           };
 
           newState[2] = {
             ...prevState[2],
-            image: s3,
+            image: s3.status === okResponseStatus ? s2.url : slides?.[2].image,
           };
 
           return newState;
@@ -258,57 +271,57 @@ function PlanetPage() {
   return (
     <>
       <div className={s.container}>
-        <div className="searchPlanetRoot">
-          <div className="s-p-heroIsRoot">
-            <Link className="s-p-link" to="/">
+        <div className={s.searchPlanetRoot}>
+          <div className={s.sPHeroIsRoot}>
+            <Link className={s.sPLink} to="/">
               Back
             </Link>
             <input
-              className="s-p-searching"
+              className={s.sPsearching}
               name="setHero"
               onChange={onChange}
               type="number"
               placeholder="Search"
               value={planetId}
             />
-            <button className="s-p-submitButton" onClick={submit}>
+            <button className={s.sPSubmitButton} onClick={submit}>
               Show
             </button>
           </div>
           {planetData && (
-            <div className="s-p-descriptionAndImg">
-              <div className="s-p-image">
+            <div className={s.sPlanetsDescriptionAndImg}>
+              <div className={s.sPImage}>
                 <img src={planetData?.image} alt="Planet Image" />
               </div>
-              <div className="s-p-descriptionContainer">
-                <span className="s-p-name">{planetData?.name}</span>
-                <div className="s-p-description">
-                  <span className="s-p-details">Description</span>
-                  <span className="s-p-rotationPeriod">
+              <div className={s.sPDescriptionContainer}>
+                <span className={s.sPName}>{planetData?.name}</span>
+                <div className={s.sPDescription}>
+                  <span className={s.sPDetails}>Description</span>
+                  <span className={s.sPRotationPeriod}>
                     RotationPeriod: {planetData?.rotation_period}
                   </span>
-                  <span className="s-p-residents">
+                  <span className={s.sPResidents}>
                     Residents: {planetData?.residents}
                   </span>
-                  <span className="s-p-orbitalPeriod">
+                  <span className={s.sPOrbitalPeriod}>
                     OrbitalPeriod: {planetData?.orbital_period}
                   </span>
-                  <span className="s-p-diameter">
+                  <span className={s.sPDiameter}>
                     Diameter: {planetData?.diameter}
                   </span>
-                  <span className="s-p-climate">
+                  <span className={s.sPClimate}>
                     Climate: {planetData?.climate}
                   </span>
-                  <span className="s-p-gravity">
+                  <span className={s.sPGravity}>
                     Gravity: {planetData?.gravity}
                   </span>
-                  <span className="s-p-terrain">
+                  <span className={s.sPTerrain}>
                     Terrain: {planetData?.terrain}
                   </span>
-                  <span className="s-p-surfaceWater">
+                  <span className={s.sPSurfaceWater}>
                     SurfaceWater: {planetData?.surface_water}
                   </span>
-                  <span className="s-p-population">
+                  <span className={s.sPPopulation}>
                     Population: {planetData?.population}
                   </span>
                 </div>
@@ -316,14 +329,18 @@ function PlanetPage() {
             </div>
           )}
         </div>
-        <div className={s.slides}>
-          <button onClick={() => onClick('PREV')}>‹</button>
+        <div className={s.rootSlides}>
+          <div className={s.slides}>
+            <button onClick={() => onClick('PREV')}>‹</button>
 
-          {[...slidesState, ...slidesState, ...slidesState].map((slide, i) => {
-            const offset = slides.length + (state.slideIndex - i);
-            return <Slide slide={slide} offset={offset} key={i} />;
-          })}
-          <button onClick={() => onClick('NEXT')}>›</button>
+            {[...slidesState, ...slidesState, ...slidesState].map(
+              (slide, i) => {
+                const offset = slides.length + (state.slideIndex - i);
+                return <Slide slide={slide} offset={offset} key={i} />;
+              }
+            )}
+            <button onClick={() => onClick('NEXT')}>›</button>
+          </div>
         </div>
       </div>
     </>
