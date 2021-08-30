@@ -1,17 +1,17 @@
-.s-h-descriptionAndImg {
+.s-s-descriptionAndImg {
     display: flex ;
     background-color: black;
 }
 
-.s-h-descriptionContainer {
+.s-s-descriptionContainer {
     padding-top: 10px;
 }
 
-.s-h-image {
+.s-s-image {
 
 }
 
-.s-h-description {
+.s-s-description {
     width: 100%;
     color: whitesmoke;
     display: grid;
@@ -19,26 +19,26 @@
     
 }
 
-.s-h-description span {
+.s-s-description span {
     font-size: x-large;
     font-weight: 700;
     margin-left: 39px;
     font-family: inherit;
 }
 
-.s-h-details {
+.s-s-details {
     font-size: xx-large !important;
     font-weight: 900 !important;
 }
 
-.s-h-name {
+.s-s-name {
     color: whitesmoke;
     font-weight: 900;
     margin-left: 47px;
     font-size: xxx-large;
 }
 
-.s-h-submitButton {
+.s-s-submitButton {
     padding-top: 7px;
     padding-bottom: 7px;
     background-color: black;
@@ -50,12 +50,12 @@
     margin-left: 10px;
 }
 
-.s-h-heroIsRoot {
+.s-s-heroIsRoot {
     width: 100%;
     background: black;
 }
 
-.s-h-link {
+.s-s-link {
     color: whitesmoke;
     font-weight: 700;
     border: 2px solid;
@@ -67,23 +67,63 @@
     padding-right: 3px;
 }
 
-.s-h-height {
+.s-s-MGLT {
 
 }
 
-.s-h-mass {
+.s-s-consumables {
 
 }
 
-.s-h-hairColor {
+.s-s-costInCredits {
 
 }
 
-.s-h-skinColor {
+.s-s-created {
 
 }
 
-.s-h-searching {
+.s-s-crew {
+
+}
+
+.s-s-edited {
+
+}
+
+.s-s-hyperdriveRating {
+
+}
+
+.s-s-length {
+
+}
+
+.s-s-manufacturer {
+
+}
+
+.s-s-maxAtmospheringSpeed {
+
+}
+
+.s-s-model {
+
+}
+
+.s-s-passengers {
+
+}
+
+.s-s-starshipClass {
+
+}
+
+.s-s-pilots {
+    
+}
+
+.s-s-searching {
     padding-top: 8px;
     padding-bottom: 8px;
     background-color: black;

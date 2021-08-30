@@ -1,11 +1,11 @@
 import React, { useCallBack } from 'react';
-import { Link } from 'react-router-dom';
 
 function TestInMarch() {
-  const test = () => {
+  const test = useCallBack(() => {
     const testData = {
       firstName: 'Max',
       lastName: 'Logvyniuk',
+      // eslint-disable-next-line no-magic-numbers
       number: 100 * Math.floor(Math.random() * (9 - 1)) + 1,
     };
 
@@ -101,8 +101,6 @@ function TestInMarch() {
 
     firstArray.push(allUserData);
 
-    console.info(newArray[3]);
-
     const secondArray = newArray.map((item) => {
       const secondtest = {
         ...item,
@@ -118,10 +116,10 @@ function TestInMarch() {
 
     console.info('multy data ----', secondArray[1].description.a.b[0]?.d);
 
-    function sumTo(n) {
-      if (n === 1) return 1;
-      return n + sumTo(n - 1);
-    }
+    // function sumTo(n) {
+    //   if (n === 1) return 1;
+    //   return n + sumTo(n - 1);
+    // }
 
     // function sumTo(4) {
     //   if (n === 1) return 1;
@@ -137,9 +135,8 @@ function TestInMarch() {
     // }
 
     // alert( sumTo(100) );
-
     return true;
-  };
+  }, []);
 
   return (
     <div>

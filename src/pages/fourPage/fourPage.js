@@ -16,7 +16,7 @@ function FourPage() {
         <img id="img2" src={webDesign} alt="img2" />
         <img id="img3" src={graphicDes} alt="img3" />
       </div>
-      <p className="itsWorkersSentance">It's WORKERS of Bak-One company</p>
+      <p className="itsWorkersSentance">Its WORKERS of Bak-One company</p>
     </div>
   );
 }

@@ -4,21 +4,19 @@ import { Link } from 'react-router-dom';
 import './testInApril.css';
 
 function TestInApril() {
-
   const [date, setDate] = useState(null);
 
   const setNewDate = useCallback(() => {
-    console.info('SetData')
+    console.info('SetData');
 
-    setDate(`${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`)
-  }, [])
+    setDate(
+      `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
+    );
+  }, []);
 
   const startTimer = useCallback(() => {
-    console.info('startTimer')
-    setInterval(
-      setNewDate,
-      1000
-    );
+    console.info('startTimer');
+    setInterval(setNewDate, 1000);
   }, [setNewDate]);
 
   useEffect(() => {
@@ -32,7 +30,6 @@ function TestInApril() {
     //   setDate(null);
     // };
   }, [startTimer]);
-
 
   function call(a) {
     return function (b) {
@@ -68,49 +65,46 @@ function TestInApril() {
   }
 
   function loggingDecorator(wrapped) {
-    console.info('Wrapped result')
+    console.info('Wrapped result');
     wrapped.apply(this);
     return wrapped;
   }
 
-  const doSometingWithLogging = loggingDecorator(doSometing)
+  const doSometingWithLogging = loggingDecorator(doSometing);
 
-  const wrappedResult = useCallback( () => {
-    console.info('Start')
-    console.info(doSometingWithLogging('Graham'))
-    console.info('Finish')
-  })
+  const wrappedResult = useCallback(() => {
+    console.info('Start');
+    console.info(doSometingWithLogging('Graham'));
+    console.info('Finish');
+  });
 
   const dateToDisplay = useMemo(() => {
-    console.info('dateToDisplay - ', date)
-    return date
-  }, [date])
+    console.info('dateToDisplay - ', date);
+    return date;
+  }, [date]);
 
   const userData = useMemo(() => {
-    console.info('ghfhgf')
-    
+    console.info('ghfhgf');
     return {
-      firstName: 'Artem'
-    }
-  
-  }, []) 
+      firstName: 'Artem',
+    };
+  }, []);
   const clozuar = useCallback(() => {
     function a(obgect) {
       if (obgect?.firstName) {
-        return function(lastName) {
-          console.info(`${obgect?.firstNme} ${obgect?.lastName}`)
-        }
+        return function () {
+          console.info(`${obgect?.firstNme} ${obgect?.lastName}`);
+        };
       }
       return false;
     }
 
-    const fullName = a(userData)
+    const fullName = a(userData);
 
-    fullName('Brozzzz')
+    fullName('Brozzzz');
 
     // console.info('Result - ', results)
-  }, [userData]) 
-
+  }, [userData]);
 
   return (
     <div>
