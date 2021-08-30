@@ -268,19 +268,17 @@ function PlanetPage() {
     [planetId]
   );
 
-  const [slidesInterval, setSlidesInterval] = useState(onClick);
-
   const interval = useEffect(() => {
     const nextSlide = dispatch === 'NEXT' ? slides + 1 : slides + 1;
-    const nextslideInterval = setInterval(
-      setSlides + (1 % slides.length),
+    const nextSlideInterval = setInterval(
+      setSlides(slidesState) + (1 % slides.length),
       5000
     );
 
-    clearInterval(nextslideInterval);
-
-    return true;
-  }, [slidesInterval]);
+    return () => {
+      clearInterval(nextSlideInterval);
+    };
+  }, [slidesState]);
 
   return (
     <>
