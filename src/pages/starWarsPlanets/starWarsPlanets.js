@@ -268,6 +268,20 @@ function PlanetPage() {
     [planetId]
   );
 
+  const [slidesInterval, setSlidesInterval] = useState(onClick);
+
+  const interval = useEffect(() => {
+    const nextSlide = dispatch === 'NEXT' ? slides + 1 : slides + 1;
+    const nextslideInterval = setInterval(
+      setSlides + (1 % slides.length),
+      5000
+    );
+
+    clearInterval(nextslideInterval);
+
+    return true;
+  }, [slidesInterval]);
+
   return (
     <>
       <div className={s.container}>
@@ -277,7 +291,7 @@ function PlanetPage() {
               Back
             </Link>
             <input
-              className={s.sPsearching}
+              className={s.sPSearching}
               name="setHero"
               onChange={onChange}
               type="number"

@@ -31,7 +31,9 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
+  background: black;
   overflow: hidden;
+  height: 437px;
 }
 
 .container {
@@ -89,13 +91,14 @@
 }
 
 .slideContent {
-  width: 23vw;
+  width: 25vw;
   height: 26vw;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   transition: transform 0.5s ease-in-out;
   opacity: 0.7;
+  border-radius: 30px;
 
   display: grid;
   align-content: center;
@@ -119,6 +122,7 @@
   transition: opacity 0.3s linear;
   text-shadow: 0 0.1rem 1rem #000;
   opacity: 0;
+  color: wheat;
 
   .slideSubtitle,
   .slideTitle {
@@ -131,12 +135,14 @@
 
   .slideSubtitle::before {
     content: "— ";
+    color: wheat;
   }
 
   .slideDescription {
     margin: 0;
     font-size: 0.8rem;
     letter-spacing: 0.2ch;
+    color: wheat;
   }
 }
 
@@ -188,11 +194,11 @@
   width: 100vw;
   /* display: flex; */
   height: 320px;
+  background: black;
 }
 
 .sPlanetsDescriptionAndImg {
   display: flex ;
-  margin-top: 10px;
   background-color: black;
 }
 
@@ -205,6 +211,7 @@
 .sPImage img {
   /* width: 50%; */
   height: 50%;
+  border-radius: 45px;
  }
 .sPImage img {
 /* width: 50%; */
@@ -261,6 +268,7 @@ height: 200px;
 .sPHeroIsRoot {
   width: 100%;
   background: black;
+  padding-bottom: 3px;
 }
 
 .sPLink {
@@ -322,5 +330,5 @@ height: 200px;
   font-weight: 700;
   border-radius: 8px;
   padding-left: 5px;
-  width: 75%;
+  width: 91%;
 }
