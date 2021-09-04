@@ -9,13 +9,13 @@ function NinePage() {
   return (
     <div>
       <Link to="/">Back</Link>
-      <div class="root">
+      <div className="root">
         <div className="photo">
           <img src={img1} alt="img3" />
         </div>
-        <div class="aboutSentences">
+        <div className="aboutSentences">
           <p className="name">Melannie Doe</p>
-          <p className="job">IT'S Project Menager</p>
+          <p className="job">ITS Project Menager</p>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useState } from 'react';
 
 function Test() {
   const inichial = {
@@ -19,12 +19,15 @@ function Test() {
     if (Number(count.value1) === '8' && Number(count.value2) === '2') {
       result = count.value1 / count.value2;
     }
+    // eslint-disable-next-line no-magic-numbers
     if (count.value1 === 45 && count.value2 === 27) {
       result = count.value1 - count.value2;
     }
+    // eslint-disable-next-line no-magic-numbers
     if (count.value1 === 4 && count.value2 === 10) {
       result = count.value1 * count.value2;
     } else {
+      // eslint-disable-next-line no-magic-numbers
       result = 987;
     }
 

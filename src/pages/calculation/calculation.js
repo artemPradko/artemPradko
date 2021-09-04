@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './calculation.css';
@@ -64,9 +64,9 @@ function Calculation() {
       dataState.value3
     ) {
       const valuesSum =
-        parseInt(dataState.value1, 10) +
-        parseInt(dataState.value2, 10) +
-        parseInt(dataState.value3, 10);
+        parseInt(dataState.value1) +
+        parseInt(dataState.value2) +
+        parseInt(dataState.value3);
 
       setDataState((prevState) => ({
         ...prevState,
@@ -122,11 +122,6 @@ function Calculation() {
       [name]: value,
     }));
   }, []);
-
-  const user = {
-    name: 'Jonn',
-    surname: 'Smith',
-  };
 
   return (
     <div className="calculationRoot">

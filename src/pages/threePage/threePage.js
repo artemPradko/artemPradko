@@ -9,7 +9,7 @@ function ThreePage() {
   return (
     <div>
       <Link to="/">Back</Link>
-      <div class="root">
+      <div className="root">
         <div className="sitelogo">
           <img className="sitelogo" src={Logo} alt="Logo" />
         </div>
