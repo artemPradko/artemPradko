@@ -154,6 +154,8 @@ function PlanetPage() {
 
   const [planetData, setPlanetData] = useState(null);
 
+  const [stopAutoSlider, setStopAutoSlider] = useState(false);
+
   const okResponseStatus = 200;
 
   const onChange = useCallback((event) => {
@@ -268,15 +270,38 @@ function PlanetPage() {
     [planetId]
   );
 
-  useEffect(() => {
-    // const nextSlide = dispatch === 'NEXT' ? slides + 1 : slides + 1;
-    // eslint-disable-next-line no-magic-numbers
-    const nextSlideInterval = setInterval(() => onClick('NEXT'), 5000);
+  // useEffect(() => {
+  //   // const nextSlide = dispatch === 'NEXT' ? slides + 1 : slides + 1;
+  //   // eslint-disable-next-line no-magic-numbers
+  //   const nextSlideInterval = setInterval(() => onClick('NEXT'), 5000);
 
-    return () => {
-      clearInterval(nextSlideInterval);
-    };
-  }, [onClick, slidesState]);
+  //   return () => {
+  //     clearInterval(nextSlideInterval);
+  //   };
+  // }, [onClick, slidesState]);
+
+  const runSliderInterval = useCallback(
+    () => setInterval(() => onClick('PREV'), 5000),
+    [onClick]
+  );
+
+  useEffect(() => {
+    const interval = runSliderInterval();
+
+    if (stopAutoSlider) {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [runSliderInterval, stopAutoSlider]);
+
+  const changeAutoSlider = useCallback(() => {
+    setStopAutoSlider(!stopAutoSlider);
+  }, [stopAutoSlider]);
+
+  // const offStopAutoSlider = useCallback(() => {
+  //   setStopAutoSlider(false);
+  // }, []);
 
   return (
     <>
@@ -298,6 +323,10 @@ function PlanetPage() {
               Show
             </button>
           </div>
+          <button className={s.sPAutoSliderButton} onClick={changeAutoSlider}>
+            {stopAutoSlider ? 'onAuto' : 'stopAuto'}
+          </button>
+          {/* <button onClick={offStopAutoSlider}></button> */}
           {planetData && (
             <div className={s.sPlanetsDescriptionAndImg}>
               <div className={s.sPImage}>
@@ -341,13 +370,15 @@ function PlanetPage() {
         </div>
         <div className={s.rootSlides}>
           <div className={s.slides}>
-            <button onClick={() => onClick('PREV')}>‹</button>
+            <button onClick={() => onClick('NEXT')}>‹</button>
 
-            {[...slides, ...slides, ...slides].map((slide, i) => {
-              const offset = slides.length + (state.slideIndex - i);
-              return <Slide slide={slide} offset={offset} key={i} />;
-            })}
-            <button onClick={() => onClick('NEXT')}>›</button>
+            {[...slidesState, ...slidesState, ...slidesState].map(
+              (slide, i) => {
+                const offset = slides.length + (state.slideIndex - i);
+                return <Slide slide={slide} offset={offset} key={i} />;
+              }
+            )}
+            <button onClick={() => onClick('PREV')}>›</button>
           </div>
         </div>
       </div>
