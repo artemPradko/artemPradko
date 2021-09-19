@@ -268,19 +268,15 @@ function PlanetPage() {
     [planetId]
   );
 
-  const [slidesInterval, setSlidesInterval] = useState(onClick);
+  useEffect(() => {
+    // const nextSlide = dispatch === 'NEXT' ? slides + 1 : slides + 1;
+    // eslint-disable-next-line no-magic-numbers
+    const nextSlideInterval = setInterval(() => onClick('NEXT'), 5000);
 
-  const interval = useEffect(() => {
-    const nextSlide = dispatch === 'NEXT' ? slides + 1 : slides + 1;
-    const nextslideInterval = setInterval(
-      setSlides + (1 % slides.length),
-      5000
-    );
-
-    clearInterval(nextslideInterval);
-
-    return true;
-  }, [slidesInterval]);
+    return () => {
+      clearInterval(nextSlideInterval);
+    };
+  }, [onClick, slidesState]);
 
   return (
     <>
@@ -347,12 +343,10 @@ function PlanetPage() {
           <div className={s.slides}>
             <button onClick={() => onClick('PREV')}>‹</button>
 
-            {[...slidesState, ...slidesState, ...slidesState].map(
-              (slide, i) => {
-                const offset = slides.length + (state.slideIndex - i);
-                return <Slide slide={slide} offset={offset} key={i} />;
-              }
-            )}
+            {[...slides, ...slides, ...slides].map((slide, i) => {
+              const offset = slides.length + (state.slideIndex - i);
+              return <Slide slide={slide} offset={offset} key={i} />;
+            })}
             <button onClick={() => onClick('NEXT')}>›</button>
           </div>
         </div>
