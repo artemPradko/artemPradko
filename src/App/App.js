@@ -20,6 +20,7 @@ import TestInMay from '../pages/testInMay/testInMay';
 import TestInJune from '../pages/testInJune/testInJune';
 import StarWarsPlanet from '../pages/starWarsPlanets/starWarsPlanets';
 import StarWarsStarships from '../pages/starWarsStarships/starWarsStarships';
+import ToDoList from '../pages/toDoList/toDoList';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/starWarsPlanet" component={StarWarsPlanet} />
         <Route path="/starWarsStarships" component={StarWarsStarships} />
         <Route path="/calculation" component={Calculation} />
+        <Route path="/toDoList" component={ToDoList} />
       </Switch>
     </BrowserRouter>
   );
