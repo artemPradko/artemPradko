@@ -26,13 +26,16 @@ function ToDo() {
     setValue('');
   }, [newValue]);
 
-  const changeValue = useCallBack((change) => {
-    setNewItem((prevState) => {
-      const newItemState = [...prevState, itemList[change]];
+  const changeValue = useCallback(
+    (change) => {
+      setNewItem((prevState) => {
+        const newItemState = [...prevState, itemList[change]];
 
-      return newItemState;
-    });
-  });
+        return newItemState;
+      });
+    },
+    [itemList]
+  );
 
   return (
     <div>
