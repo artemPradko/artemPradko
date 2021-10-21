@@ -2,7 +2,7 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // import _ from 'lodash';
 
-import './toDoList.scss';
+import './toDoList.css';
 
 function ToDo() {
   const [itemList, setNewItem] = useState([]);
@@ -26,16 +26,14 @@ function ToDo() {
     setValue('');
   }, [newValue]);
 
-  const changeValue = useCallback(
-    (change) => {
-      setNewItem((prevState) => {
-        const newItemState = [...prevState, itemList[change]];
-
-        return newItemState;
-      });
-    },
-    [itemList]
-  );
+  const changeValue = () => {
+    setNewItem({
+      if(onClick) {
+        newValue.indexOf(item);
+        setNewItem.delete.indexOf(item);
+      },
+    });
+  };
 
   return (
     <div>
@@ -46,7 +44,7 @@ function ToDo() {
         value={newValue}
       />
       <button onClick={addNewItem}>Add</button>
-      <ul>
+      <ul className="listBorder" onClick={changeValue}>
         {itemList.map((item) => (
           <li key={itemList.indexOf(item)}>{item}</li>
         ))}
