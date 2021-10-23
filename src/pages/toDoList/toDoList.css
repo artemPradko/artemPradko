@@ -2,3 +2,8 @@
     border: grey;
     border-radius: 1px;
 }
+
+.todoComponent {
+    display: flex;
+    margin-right: 5px;
+}
