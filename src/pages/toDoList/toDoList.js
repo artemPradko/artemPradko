@@ -1,12 +1,14 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 // import _ from 'lodash';
 
-import './toDoList.scss';
+import './toDoList.css';
 
 function ToDo() {
-  const [itemList, setNewItem] = useState([]);
+  const [itemList, setItemList] = useState([]);
   const [newValue, setValue] = useState('');
+  const [itemToUpdate, setItemToUpdate] = useState(null);
+  const [itemToDelete, setItemToDelete] = useState(null);
 
   const onChange = useCallback((e) => {
     console.info('e.target ---', e.target.value);
@@ -17,8 +19,11 @@ function ToDo() {
   }, []);
 
   const addNewItem = useCallback(() => {
-    setNewItem((prevState) => {
+
+    setItemList((prevState) => {
       const newItemState = [...prevState, newValue];
+
+      console.info('addNewItem ---', prevState, newValue, newItemState);
 
       return newItemState;
     });
@@ -26,16 +31,54 @@ function ToDo() {
     setValue('');
   }, [newValue]);
 
-  const changeValue = useCallback(
-    (change) => {
-      setNewItem((prevState) => {
-        const newItemState = [...prevState, itemList[change]];
+  const setUpdatedItem = useCallback((item) => {
+    
+    console.info("setUpdatedItem ----", item, itemList)
+    const index = itemList.findIndex(i => i === item);
 
-        return newItemState;
-      });
-    },
-    [itemList]
-  );
+    setItemToUpdate(index)
+
+    setValue(item)
+
+  }, [itemList])
+
+  // console.info(itemList);
+
+  const changeValue = useCallback(() => {
+    //  const index = itemList.findIndex((item) => item.index );  
+    
+    console.info("changeValue ----", itemToUpdate, itemList, newValue)
+
+     let newItemList = []
+     
+    if (itemList.length === 1) {
+      newItemList.push(newValue)
+    } else {
+      newItemList = [
+        ...itemList?.slice?.(0, itemToUpdate),
+        newValue,
+        ...itemList?.slice?.(itemToUpdate + 1)
+      ]
+    }
+
+     console.info('newItemList ---', newItemList);
+
+     setItemList(newItemList)
+
+     setItemToUpdate(null)
+     setValue('')
+  }, [itemList, newValue])
+
+  const deleteItem = useCallback((item) => {
+    let idx = itemList.findIndex(f => f === item)
+
+    let newItemList = [
+      ...itemList?.slice?.(0, idx),
+      ...itemList?.slice?.(idx + 1)
+    ]
+
+    setItemList(newItemList)
+  })
 
   return (
     <div>
@@ -45,12 +88,16 @@ function ToDo() {
         placeholder="Add another one"
         value={newValue}
       />
-      <button onClick={addNewItem}>Add</button>
-      <ul>
-        {itemList.map((item) => (
-          <li key={itemList.indexOf(item)}>{item}</li>
-        ))}
-      </ul>
+      {typeof itemToUpdate === 'number' ? <button onClick={changeValue}>Update</button> : <button onClick={addNewItem}>Add</button>}
+       <ul>
+          {itemList.map((item) => (
+            <div key={itemList.indexOf(item)} className="todoComponent">
+              <li key={itemList.indexOf(item)}>{item}</li>
+              <button onClick={() => setUpdatedItem(item)}>Change</button>
+              <button onClick={() => deleteItem(item)}>Delete</button>
+            </div>
+          ))}
+        </ul> 
     </div>
   );
 }
