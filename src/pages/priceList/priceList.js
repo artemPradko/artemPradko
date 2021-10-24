@@ -100,6 +100,17 @@ function PriceList() {
 //        ))
 //   }, [priceList])
 
+const deleteItem = useCallback((item) => {
+    let idx = priceList.findIndex(f => f === item)
+
+    let newItemList = [
+      ...priceList?.slice?.(0, idx),
+      ...priceList?.slice?.(idx + 1)
+    ]
+
+    setPriceList(newItemList)
+  })
+
    return(
       <div>
          {priceList.length > 0 && priceList.map((item) => (
@@ -108,6 +119,7 @@ function PriceList() {
           <li>{item?.price}</li>
           <li>{item?.count}</li>
           <li>{item?.totalAmount}</li>
+          <button onClick={() => deleteItem(item)}>Delete</button>
         </div>
        ))}
          <div>
