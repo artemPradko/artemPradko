@@ -21,6 +21,7 @@ import TestInJune from '../pages/testInJune/testInJune';
 import StarWarsPlanet from '../pages/starWarsPlanets/starWarsPlanets';
 import StarWarsStarships from '../pages/starWarsStarships/starWarsStarships';
 import ToDoList from '../pages/toDoList/toDoList';
+import PriceList from '../pages/priceList/priceList';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/starWarsStarships" component={StarWarsStarships} />
         <Route path="/calculation" component={Calculation} />
         <Route path="/toDoList" component={ToDoList} />
+        <Route path="/priceList" component={PriceList} /> 
       </Switch>
     </BrowserRouter>
   );
