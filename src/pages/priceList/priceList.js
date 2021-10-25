@@ -4,22 +4,23 @@ import './priceList.css';
 // import { useCallback } from 'react';
 
 function PriceList() {
-   const initialState = {
-     name: '',
-     price: 0,
-     count: 0,
-     totalAmount: 0
-   }
+  const initialState = {
+    name: '',
+    price: 0,
+    count: 0,
+    totalAmount: 0,
+  };
 
-   const initialTotalValue = {
-       amount: 0
-   }
+  const initialTotalValue = {
+    amount: 0,
+  };
 
-   const [priceList, setPriceList] = useState([]);
-   const [newValue, setNewValue] = useState(initialState);
-   const [totalValue, setTotalValue] = useState(initialTotalValue);
+  const [priceList, setPriceList] = useState([]);
+  const [newValue, setNewValue] = useState(initialState);
+  const [totalValue, setTotalValue] = useState(initialTotalValue);
+  const [itemToUpdate, setItemToUpdate] = useState(null);
 
-   const onChangeData = useCallback((event) => {
+  const onChangeData = useCallback((event) => {
     console.info(event);
 
     // event.target
@@ -47,103 +48,150 @@ function PriceList() {
   }, []);
 
   const addNewItem = useCallback(() => {
-      const valueToSet = {
-          ...newValue,
-          totalAmount: newValue.price * newValue.count
-      }
+    const valueToSet = {
+      ...newValue,
+      totalAmount: newValue.price * newValue.count,
+    };
 
+    console.info('add Item new State ---', priceList);
 
-      console.info('add Item new State ---', priceList)
+    const newList = [...priceList, valueToSet];
 
-      const newList = [
-        ...priceList, valueToSet
-    ]
+    setPriceList((prevState) => {
+      console.info(':(');
 
-      setPriceList(prevState => {
-        console.info(':(')
+      return newList;
+    });
 
-        return newList
-      })
+    setNewValue(initialState);
 
-      setNewValue(initialState)
+    const totalV = newList.reduce((sum, item) => {
+      console.info('newList.reduce ---', item, sum);
 
-      const totalV = newList.reduce((sum, item) => {
-        
-        console.info('newList.reduce ---', item, sum)
-        
-        return sum + item.totalAmount
-      }, 0)
+      return sum + item.totalAmount;
+    }, 0);
 
-      console.info('totalV ---', totalV)
+    console.info('totalV ---', totalV);
 
-      setTotalValue((prevState) => {
-          const changeTotalValue = {
-            ...prevState,
-            amount: totalV
-          }
+    setTotalValue((prevState) => {
+      const changeTotalValue = {
+        ...prevState,
+        amount: totalV,
+      };
 
-          return changeTotalValue;
-      })
-  }, [priceList, newValue])
+      return changeTotalValue;
+    });
+  }, [priceList, newValue]);
 
-//   const items = useMemo(() => {
+  //   const items = useMemo(() => {
 
-//     console.info('items ---', priceList, priceList.length)
+  //     console.info('items ---', priceList, priceList.length)
 
-//     return priceList.length > 0 && priceList.map((item) => (
-//         <div key={priceList.indexOf(item)}>
-//           <li>{item?.name}</li>
-//           <li>{item?.price}</li>
-//           <li>{item?.count}</li>
-//           <li>{item?.totalAmount}</li>
-//         </div>
-//        ))
-//   }, [priceList])
+  //     return priceList.length > 0 && priceList.map((item) => (
+  //         <div key={priceList.indexOf(item)}>
+  //           <li>{item?.name}</li>
+  //           <li>{item?.price}</li>
+  //           <li>{item?.count}</li>
+  //           <li>{item?.totalAmount}</li>
+  //         </div>
+  //        ))
+  //   }, [priceList])
 
-const deleteItem = useCallback((item) => {
-    let idx = priceList.findIndex(f => f === item)
+  const setUpdatedItem = useCallback(
+    (item) => {
+      console.info('setUpdatedItem ----', item, priceList);
+      const index = priceList.findIndex((i) => i === item);
 
-    let newItemList = [
+      setItemToUpdate(index);
+
+      setNewValue(item);
+    },
+    [priceList]
+  );
+
+  // console.info(itemList);
+
+  const changeValue = useCallback(() => {
+    //  const index = itemList.findIndex((item) => item.index );
+
+    console.info('changeValue ----', itemToUpdate, priceList, newValue);
+
+    let newItemList = [];
+
+    if (priceList.length === 1) {
+      newItemList.push(newValue);
+    } else {
+      newItemList = [
+        ...priceList?.slice?.(0, itemToUpdate),
+        newValue,
+        ...priceList?.slice?.(itemToUpdate + 1),
+      ];
+    }
+
+    console.info('newItemList ---', newItemList);
+
+    setPriceList(newItemList);
+
+    setItemToUpdate(null);
+    setNewValue('');
+  }, [priceList, newValue]);
+
+  const deleteItem = useCallback((item) => {
+    const idx = priceList.findIndex((f) => f === item);
+
+    const newItemList = [
       ...priceList?.slice?.(0, idx),
-      ...priceList?.slice?.(idx + 1)
-    ]
+      ...priceList?.slice?.(idx + 1),
+    ];
 
-    setPriceList(newItemList)
-  })
+    setPriceList(newItemList);
+  });
 
-   return(
+  return (
+    <div>
+      {priceList.length > 0 &&
+        priceList.map((item) => (
+          <div key={priceList.indexOf(item)}>
+            <li>{item?.name}</li>
+            <li>{item?.price}</li>
+            <li>{item?.count}</li>
+            <li>{item?.totalAmount}</li>
+            <button onClick={() => setUpdatedItem(item)}>Change</button>
+            <button onClick={() => deleteItem(item)}>Delete</button>
+          </div>
+        ))}
       <div>
-         {priceList.length > 0 && priceList.map((item) => (
-        <div key={priceList.indexOf(item)}>
-          <li>{item?.name}</li>
-          <li>{item?.price}</li>
-          <li>{item?.count}</li>
-          <li>{item?.totalAmount}</li>
-          <button onClick={() => deleteItem(item)}>Delete</button>
-        </div>
-       ))}
-         <div>
-             <input
-              name="name" onChange={onChangeData}
-              value={newValue?.name} type="text"
-             />
-             <input 
-              name="price" onChange={onChangeData}
-              value={newValue?.price} type="number"
-             />
-             <input
-              name="count" onChange={onChangeData}
-              value={newValue?.count} type="number"
-             />
-             <li></li>
-             <button onClick={addNewItem}>Add</button>
-         </div>
-         <div>
-             <li>Total</li>
-             <li>{totalValue.amount}</li>
-         </div>
+        <input
+          name="name"
+          onChange={onChangeData}
+          value={newValue?.name}
+          type="text"
+        />
+        <input
+          name="price"
+          onChange={onChangeData}
+          value={newValue?.price}
+          type="number"
+        />
+        <input
+          name="count"
+          onChange={onChangeData}
+          value={newValue?.count}
+          type="number"
+        />
+        <li></li>
+        {typeof itemToUpdate === 'number' ? (
+          <button onClick={changeValue}>Update</button>
+        ) : (
+          <button onClick={addNewItem}>Add</button>
+        )}
       </div>
-   )
+      <div>
+        <li>Total</li>
+        <li>{totalValue.amount}</li>
+      </div>
+    </div>
+  );
 }
 
-export default PriceList
+export default PriceList;
