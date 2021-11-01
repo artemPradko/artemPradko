@@ -20,32 +20,35 @@ function PriceList() {
   const [totalValue, setTotalValue] = useState(initialTotalValue);
   const [itemToUpdate, setItemToUpdate] = useState(null);
 
-  const onChangeData = useCallback((event) => {
-    console.info(event);
+  const onChangeData = useCallback(
+    (event) => {
+      console.info(event);
 
-    // event.target
-    const { target } = event;
+      // event.target
+      const { target } = event;
 
-    const { name, value } = target;
+      const { name, value } = target;
 
-    setNewValue((prevState) => {
-      console.info(
-        'prevState - ',
-        prevState,
-        'name of property - ',
-        name,
-        'new value - ',
-        value
-      );
-      const changedState = {
-        ...prevState,
-        [name]: value,
-      };
+      setNewValue((prevState) => {
+        console.info(
+          'prevState - ',
+          prevState,
+          'name of property - ',
+          name,
+          'new value - ',
+          value
+        );
+        const changedState = {
+          ...prevState,
+          [name]: value,
+        };
 
-      return changedState;
-    });
-    return null;
-  }, []);
+        return changedState;
+      });
+      return null;
+    },
+    [newValue]
+  );
 
   const addNewItem = useCallback(() => {
     const valueToSet = {
@@ -81,7 +84,7 @@ function PriceList() {
 
       return changeTotalValue;
     });
-  }, [priceList, newValue]);
+  }, [priceList, newValue, initialState]);
 
   //   const items = useMemo(() => {
 
@@ -114,6 +117,11 @@ function PriceList() {
   const changeValue = useCallback(() => {
     //  const index = itemList.findIndex((item) => item.index );
 
+    const dunamicValue = {
+      ...newValue,
+      totalAmount: newValue?.price * newValue?.count,
+    };
+
     console.info('changeValue ----', itemToUpdate, priceList, newValue);
 
     let newItemList = [];
@@ -126,26 +134,32 @@ function PriceList() {
         newValue,
         ...priceList?.slice?.(itemToUpdate + 1),
       ];
+      setNewValue(dunamicValue);
     }
+
+    console.info('dunamicValue ---', dunamicValue);
 
     console.info('newItemList ---', newItemList);
 
     setPriceList(newItemList);
 
     setItemToUpdate(null);
-    setNewValue('');
-  }, [priceList, newValue]);
+    setNewValue(initialState);
+  }, [priceList, newValue, initialState, itemToUpdate]);
 
-  const deleteItem = useCallback((item) => {
-    const idx = priceList.findIndex((f) => f === item);
+  const deleteItem = useCallback(
+    (item) => {
+      const idx = priceList.findIndex((f) => f === item);
 
-    const newItemList = [
-      ...priceList?.slice?.(0, idx),
-      ...priceList?.slice?.(idx + 1),
-    ];
+      const newItemList = [
+        ...priceList?.slice?.(0, idx),
+        ...priceList?.slice?.(idx + 1),
+      ];
 
-    setPriceList(newItemList);
-  });
+      setPriceList(newItemList);
+    },
+    [priceList]
+  );
 
   return (
     <div>
