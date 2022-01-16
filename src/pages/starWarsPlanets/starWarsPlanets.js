@@ -6,6 +6,7 @@ import React, {
   useReducer,
 } from 'react';
 import { Link } from 'react-router-dom';
+import nodeFetch from 'node-fetch';
 
 import s from './starWarsPlanet.module.scss';
 
@@ -165,8 +166,8 @@ function PlanetPage() {
 
   const submit = useCallback(async () => {
     async function getPlanet(starPlanetId) {
-      const response = await fetch(
-        `https://swapi.dev/api/planets/${starPlanetId}`
+      const response = await nodeFetch(
+        `https://localhost:8000/swapi/planet/${starPlanetId}`
       );
 
       const data = await response.json();
