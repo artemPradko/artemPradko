@@ -20,8 +20,14 @@ import TestInMay from '../pages/testInMay/testInMay';
 import TestInJune from '../pages/testInJune/testInJune';
 import StarWarsPlanet from '../pages/starWarsPlanets/starWarsPlanets';
 import StarWarsStarships from '../pages/starWarsStarships/starWarsStarships';
+import StarWarsSpecie from '../pages/starWarsSpecie/starWarsSpecie';
+import StarWarsVehicles from '../pages/starWarsVehicles/starWarsVehicles';
+import StarWarsPeople from '../pages/starWarsPeople/starWarsPeople';
 import ToDoList from '../pages/toDoList/toDoList';
 import PriceList from '../pages/priceList/priceList';
+import SignUp from '../registration/signUp';
+import SignIn from '../registration/signIn';
+import ChangePassword from '../registration/changePassword';
 
 function App() {
   return (
@@ -45,9 +51,15 @@ function App() {
         <Route path="/testInJune" component={TestInJune} />
         <Route path="/starWarsPlanet" component={StarWarsPlanet} />
         <Route path="/starWarsStarships" component={StarWarsStarships} />
+        <Route path="/starWarsSpecie" component={StarWarsSpecie} />
+        <Route path="/starWarsVehicles" component={StarWarsVehicles} />
+        <Route path="/starWarsPeople" component={StarWarsPeople} />
         <Route path="/calculation" component={Calculation} />
         <Route path="/toDoList" component={ToDoList} />
-        <Route path="/priceList" component={PriceList} /> 
+        <Route path="/priceList" component={PriceList} />
+        <Route path="/signUp" component={SignUp} />
+        <Route path="/signIn" component={SignIn} />
+        <Route path="/changePassword" component={ChangePassword} />
       </Switch>
     </BrowserRouter>
   );

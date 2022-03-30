@@ -6,7 +6,6 @@ import React, {
   useReducer,
 } from 'react';
 import { Link } from 'react-router-dom';
-import nodeFetch from 'node-fetch';
 
 import s from './starWarsPlanet.module.scss';
 
@@ -165,27 +164,39 @@ function PlanetPage() {
   }, []);
 
   const submit = useCallback(async () => {
-    async function getPlanet(starPlanetId) {
-      const response = await nodeFetch(
-        `https://localhost:8000/swapi/planet/${starPlanetId}`
-      );
+    console.info('planetId ----', planetId);
 
-      const data = await response.json();
-      const imgData = `https://starwars-visualguide.com/assets/img/planets/${
-        Number(starPlanetId) + 1
-      }.jpg`;
+    const response = await fetch(
+      `http://localhost:8000/swapi/planet?planetId=${planetId}`,
+      {
+        method: 'post',
+        headers: {
+          'Access-Control-Allow-Origin': 'http://127.0.0.1:3000',
+          'Access-Control-Allow-Methods': 'POST',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        },
+      }
+    ).catch((error) => {
+      console.error('fetch error ---', error);
 
-      const dataWithImg = {
-        ...data,
-        image: imgData,
-      };
+      return error;
+    });
 
-      console.info(dataWithImg);
+    console.info('res ---', response);
 
-      setPlanetData(dataWithImg);
-    }
+    const data = await response.json();
+    const imgData = `https://starwars-visualguide.com/assets/img/planets/${
+      Number(planetId) + 1
+    }.jpg`;
 
-    await getPlanet(planetId);
+    const dataWithImg = {
+      ...data,
+      image: imgData,
+    };
+
+    console.info(dataWithImg);
+
+    setPlanetData(dataWithImg);
   }, [planetId]);
 
   const onClick = useCallback(
