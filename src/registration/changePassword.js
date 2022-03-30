@@ -66,7 +66,7 @@ function ChangePasswordPage() {
         return true;
       }
       if (res.status === 403) {
-        setMessageState('Paroletto incorrecto');
+        setMessageState('Paroletto incorrecto tru');
       }
       if (res.status === 436) {
         console.info('refreshToken');
