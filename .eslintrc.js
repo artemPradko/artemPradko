@@ -103,7 +103,7 @@ module.exports = {
     radix: ['error', 'as-needed'],
     'react/boolean-prop-naming': 'error',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
-    'react/jsx-handler-names': 'error',
+    'react/jsx-handler-names': 'warn',
     'react/jsx-no-bind': 'off',
     'react/no-direct-mutation-state': 'error',
     'react/prefer-stateless-function': [

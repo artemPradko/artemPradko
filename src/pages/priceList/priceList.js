@@ -1,5 +1,3 @@
-// eslint-disable-next-line eslint-comments/disable-enable-pair
-/* eslint-disable prettier/prettier */
 import React, { useCallback, useMemo, useState } from 'react';
 
 import './priceList.css';
@@ -10,12 +8,12 @@ function PriceList() {
     name: '',
     price: 0,
     count: 0,
-    totalAmount: 0
-  }
+    totalAmount: 0,
+  };
 
   const initialTotalValue = {
-    amount: 0
-  }
+    amount: 0,
+  };
 
   const [priceList, setPriceList] = useState([]);
   const [newValue, setNewValue] = useState(initialState);
@@ -51,40 +49,38 @@ function PriceList() {
   const addNewItem = useCallback(() => {
     const valueToSet = {
       ...newValue,
-      totalAmount: newValue.price * newValue.count
-    }
+      totalAmount: newValue.price * newValue.count,
+    };
 
-    console.info('add Item new State ---', priceList)
+    console.info('add Item new State ---', priceList);
 
-    const newList = [
-      ...priceList, valueToSet
-    ]
+    const newList = [...priceList, valueToSet];
 
-    setPriceList(prevState => {
-      console.info(':(')
+    setPriceList((prevState) => {
+      console.info(':(');
 
-      return newList
-    })
+      return newList;
+    });
 
-    setNewValue(initialState)
+    setNewValue(initialState);
 
     const totalV = newList.reduce((sum, item) => {
-      console.info('newList.reduce ---', item, sum)
+      console.info('newList.reduce ---', item, sum);
 
-      return sum + item.totalAmount
-    }, 0)
+      return sum + item.totalAmount;
+    }, 0);
 
-    console.info('totalV ---', totalV)
+    console.info('totalV ---', totalV);
 
     setTotalValue((prevState) => {
       const changeTotalValue = {
         ...prevState,
-        amount: totalV
-      }
+        amount: totalV,
+      };
 
       return changeTotalValue;
-    })
-  }, [priceList, newValue])
+    });
+  }, [priceList, newValue]);
 
   //   const items = useMemo(() => {
 
@@ -100,29 +96,36 @@ function PriceList() {
   //        ))
   //   }, [priceList])
 
-  return(
+  return (
     <div>
-       {priceList.length > 0 && priceList.map((item) => (
-      <div key={priceList.indexOf(item)}>
-        <li>{item?.name}</li>
-        <li>{item?.price}</li>
-        <li>{item?.count}</li>
-        <li>{item?.totalAmount}</li>
-      </div>
-     ))}
-       <div>
-           <input
-            name="name" onChange={onChangeData}
-            value={newValue?.name} type="text"
-           />
-           <input
-            name="price" onChange={onChangeData}
-            value={newValue?.price} type="number"
-           />
-           <input
-            name="count" onChange={onChangeData}
-            value={newValue?.count} type="number"
-           />
+      {priceList.length > 0 &&
+        priceList.map((item) => (
+          <div key={priceList.indexOf(item)}>
+            <li>{item?.name}</li>
+            <li>{item?.price}</li>
+            <li>{item?.count}</li>
+            <li>{item?.totalAmount}</li>
+          </div>
+        ))}
+      <div>
+        <input
+          name="name"
+          onChange={onChangeData}
+          value={newValue?.name}
+          type="text"
+        />
+        <input
+          name="price"
+          onChange={onChangeData}
+          value={newValue?.price}
+          type="number"
+        />
+        <input
+          name="count"
+          onChange={onChangeData}
+          value={newValue?.count}
+          type="number"
+        />
         <li></li>
         <button onClick={addNewItem}>Add</button>
       </div>
@@ -131,7 +134,7 @@ function PriceList() {
         <li>{totalValue.amount}</li>
       </div>
     </div>
-  )
+  );
 }
 
-export default PriceList
+export default PriceList;
