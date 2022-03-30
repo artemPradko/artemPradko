@@ -1,25 +1,27 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable prettier/prettier */
 import React, { useCallback, useMemo, useState } from 'react';
 
 import './priceList.css';
 // import { useCallback } from 'react';
 
 function PriceList() {
-   const initialState = {
-     name: '',
-     price: 0,
-     count: 0,
-     totalAmount: 0
-   }
+  const initialState = {
+    name: '',
+    price: 0,
+    count: 0,
+    totalAmount: 0
+  }
 
-   const initialTotalValue = {
-       amount: 0
-   }
+  const initialTotalValue = {
+    amount: 0
+  }
 
-   const [priceList, setPriceList] = useState([]);
-   const [newValue, setNewValue] = useState(initialState);
-   const [totalValue, setTotalValue] = useState(initialTotalValue);
+  const [priceList, setPriceList] = useState([]);
+  const [newValue, setNewValue] = useState(initialState);
+  const [totalValue, setTotalValue] = useState(initialTotalValue);
 
-   const onChangeData = useCallback((event) => {
+  const onChangeData = useCallback((event) => {
     console.info(event);
 
     // event.target
@@ -47,91 +49,89 @@ function PriceList() {
   }, []);
 
   const addNewItem = useCallback(() => {
-      const valueToSet = {
-          ...newValue,
-          totalAmount: newValue.price * newValue.count
-      }
+    const valueToSet = {
+      ...newValue,
+      totalAmount: newValue.price * newValue.count
+    }
 
+    console.info('add Item new State ---', priceList)
 
-      console.info('add Item new State ---', priceList)
-
-      const newList = [
-        ...priceList, valueToSet
+    const newList = [
+      ...priceList, valueToSet
     ]
 
-      setPriceList(prevState => {
-        console.info(':(')
+    setPriceList(prevState => {
+      console.info(':(')
 
-        return newList
-      })
+      return newList
+    })
 
-      setNewValue(initialState)
+    setNewValue(initialState)
 
-      const totalV = newList.reduce((sum, item) => {
-        
-        console.info('newList.reduce ---', item, sum)
-        
-        return sum + item.totalAmount
-      }, 0)
+    const totalV = newList.reduce((sum, item) => {
+      console.info('newList.reduce ---', item, sum)
 
-      console.info('totalV ---', totalV)
+      return sum + item.totalAmount
+    }, 0)
 
-      setTotalValue((prevState) => {
-          const changeTotalValue = {
-            ...prevState,
-            amount: totalV
-          }
+    console.info('totalV ---', totalV)
 
-          return changeTotalValue;
-      })
+    setTotalValue((prevState) => {
+      const changeTotalValue = {
+        ...prevState,
+        amount: totalV
+      }
+
+      return changeTotalValue;
+    })
   }, [priceList, newValue])
 
-//   const items = useMemo(() => {
+  //   const items = useMemo(() => {
 
-//     console.info('items ---', priceList, priceList.length)
+  //     console.info('items ---', priceList, priceList.length)
 
-//     return priceList.length > 0 && priceList.map((item) => (
-//         <div key={priceList.indexOf(item)}>
-//           <li>{item?.name}</li>
-//           <li>{item?.price}</li>
-//           <li>{item?.count}</li>
-//           <li>{item?.totalAmount}</li>
-//         </div>
-//        ))
-//   }, [priceList])
+  //     return priceList.length > 0 && priceList.map((item) => (
+  //         <div key={priceList.indexOf(item)}>
+  //           <li>{item?.name}</li>
+  //           <li>{item?.price}</li>
+  //           <li>{item?.count}</li>
+  //           <li>{item?.totalAmount}</li>
+  //         </div>
+  //        ))
+  //   }, [priceList])
 
-   return(
-      <div>
-         {priceList.length > 0 && priceList.map((item) => (
-        <div key={priceList.indexOf(item)}>
-          <li>{item?.name}</li>
-          <li>{item?.price}</li>
-          <li>{item?.count}</li>
-          <li>{item?.totalAmount}</li>
-        </div>
-       ))}
-         <div>
-             <input
-              name="name" onChange={onChangeData}
-              value={newValue?.name} type="text"
-             />
-             <input 
-              name="price" onChange={onChangeData}
-              value={newValue?.price} type="number"
-             />
-             <input
-              name="count" onChange={onChangeData}
-              value={newValue?.count} type="number"
-             />
-             <li></li>
-             <button onClick={addNewItem}>Add</button>
-         </div>
-         <div>
-             <li>Total</li>
-             <li>{totalValue.amount}</li>
-         </div>
+  return(
+    <div>
+       {priceList.length > 0 && priceList.map((item) => (
+      <div key={priceList.indexOf(item)}>
+        <li>{item?.name}</li>
+        <li>{item?.price}</li>
+        <li>{item?.count}</li>
+        <li>{item?.totalAmount}</li>
       </div>
-   )
+     ))}
+       <div>
+           <input
+            name="name" onChange={onChangeData}
+            value={newValue?.name} type="text"
+           />
+           <input
+            name="price" onChange={onChangeData}
+            value={newValue?.price} type="number"
+           />
+           <input
+            name="count" onChange={onChangeData}
+            value={newValue?.count} type="number"
+           />
+        <li></li>
+        <button onClick={addNewItem}>Add</button>
+      </div>
+      <div>
+        <li>Total</li>
+        <li>{totalValue.amount}</li>
+      </div>
+    </div>
+  )
 }
 
 export default PriceList
