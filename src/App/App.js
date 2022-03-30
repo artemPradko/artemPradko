@@ -47,7 +47,7 @@ function App() {
         <Route path="/starWarsStarships" component={StarWarsStarships} />
         <Route path="/calculation" component={Calculation} />
         <Route path="/toDoList" component={ToDoList} />
-        <Route path="/priceList" component={PriceList} /> 
+        <Route path="/priceList" component={PriceList} />
       </Switch>
     </BrowserRouter>
   );
