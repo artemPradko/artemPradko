@@ -175,18 +175,18 @@ function SignInPage() {
         <input
           className="registrationValues"
           type="text"
-          name="password"
-          placeholder="Password"
-          onChange={onChange}
-          value={dataState?.password}
-        />
-        <input
-          className="registrationValues"
-          type="text"
           name="email"
           placeholder="Email"
           onChange={onChange}
           value={dataState?.email}
+        />
+        <input
+          className="registrationValues"
+          type="text"
+          name="password"
+          placeholder="Password"
+          onChange={onChange}
+          value={dataState?.password}
         />
       </div>
       <button className="registrationValues" onClick={onSubmit}>
@@ -197,7 +197,15 @@ function SignInPage() {
         Logout
       </button>
       <h2 className="results">{logoutState}</h2>
-      {isAuthorized && <Link to="/changePassword">Change password</Link>}
+      {isAuthorized && (
+        <Link
+          style={{ width: '183px' }}
+          className="registrationValues"
+          to="/changePassword"
+        >
+          Change password
+        </Link>
+      )}
       <div>
         <button className="registrationValues" onClick={getUser}>
           Get user

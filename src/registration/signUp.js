@@ -65,12 +65,15 @@ function SignUpPage() {
 
   return (
     <div className="root">
-      <Link to="/">Back</Link>
       <div className="registrationValuesRoot">
+        <Link className="registrationValues" to="/">
+          Back
+        </Link>
         <input
           className="registrationValues"
           type="text"
           name="name"
+          placeholder="Name"
           onChange={onChange}
           value={dataState?.name}
         />
@@ -78,6 +81,7 @@ function SignUpPage() {
           className="registrationValues"
           type="text"
           name="lastName"
+          placeholder="Last name"
           onChange={onChange}
           value={dataState?.lastName}
         />
@@ -85,6 +89,7 @@ function SignUpPage() {
           className="registrationValues"
           type="text"
           name="password"
+          placeholder="Password"
           onChange={onChange}
           value={dataState?.password}
         />
@@ -92,11 +97,14 @@ function SignUpPage() {
           className="registrationValues"
           type="text"
           name="email"
+          placeholder="Email"
           onChange={onChange}
           value={dataState?.email}
         />
       </div>
-      <button onClick={onSubmit}>Submit</button>
+      <button className="registrationValues" onClick={onSubmit}>
+        Submit
+      </button>
       <h1>{registrationState}</h1>
     </div>
   );

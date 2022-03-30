@@ -59,10 +59,10 @@ function ChangePasswordPage() {
         }),
       });
 
-      const resData = res.json();
-
       if (res.status === 200) {
-        setMessageState(resData);
+        const data = await res.json();
+
+        setMessageState(JSON.stringify(data));
         return true;
       }
       if (res.status === 403) {
