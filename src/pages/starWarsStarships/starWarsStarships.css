@@ -1,3 +1,10 @@
+.root {
+    width: 100vw;
+    /* display: flex; */
+    height: 757px;
+    background: black;
+}
+
 .s-s-descriptionAndImg {
     display: flex ;
     background-color: black;

@@ -18,37 +18,33 @@ function PriceList() {
   const [priceList, setPriceList] = useState([]);
   const [newValue, setNewValue] = useState(initialState);
   const [totalValue, setTotalValue] = useState(initialTotalValue);
-  const [itemToUpdate, setItemToUpdate] = useState(null);
 
-  const onChangeData = useCallback(
-    (event) => {
-      console.info(event);
+  const onChangeData = useCallback((event) => {
+    console.info(event);
 
-      // event.target
-      const { target } = event;
+    // event.target
+    const { target } = event;
 
-      const { name, value } = target;
+    const { name, value } = target;
 
-      setNewValue((prevState) => {
-        console.info(
-          'prevState - ',
-          prevState,
-          'name of property - ',
-          name,
-          'new value - ',
-          value
-        );
-        const changedState = {
-          ...prevState,
-          [name]: value,
-        };
+    setNewValue((prevState) => {
+      console.info(
+        'prevState - ',
+        prevState,
+        'name of property - ',
+        name,
+        'new value - ',
+        value
+      );
+      const changedState = {
+        ...prevState,
+        [name]: value,
+      };
 
-        return changedState;
-      });
-      return null;
-    },
-    [newValue]
-  );
+      return changedState;
+    });
+    return null;
+  }, []);
 
   const addNewItem = useCallback(() => {
     const valueToSet = {
@@ -84,7 +80,7 @@ function PriceList() {
 
       return changeTotalValue;
     });
-  }, [priceList, newValue, initialState]);
+  }, [priceList, newValue]);
 
   //   const items = useMemo(() => {
 
@@ -100,67 +96,6 @@ function PriceList() {
   //        ))
   //   }, [priceList])
 
-  const setUpdatedItem = useCallback(
-    (item) => {
-      console.info('setUpdatedItem ----', item, priceList);
-      const index = priceList.findIndex((i) => i === item);
-
-      setItemToUpdate(index);
-
-      setNewValue(item);
-    },
-    [priceList]
-  );
-
-  // console.info(itemList);
-
-  const changeValue = useCallback(() => {
-    //  const index = itemList.findIndex((item) => item.index );
-
-    const dunamicValue = {
-      ...newValue,
-      totalAmount: newValue?.price * newValue?.count,
-    };
-
-    console.info('changeValue ----', itemToUpdate, priceList, newValue);
-
-    let newItemList = [];
-
-    if (priceList.length === 1) {
-      newItemList.push(newValue);
-    } else {
-      newItemList = [
-        ...priceList?.slice?.(0, itemToUpdate),
-        newValue,
-        ...priceList?.slice?.(itemToUpdate + 1),
-      ];
-      setNewValue(dunamicValue);
-    }
-
-    console.info('dunamicValue ---', dunamicValue);
-
-    console.info('newItemList ---', newItemList);
-
-    setPriceList(newItemList);
-
-    setItemToUpdate(null);
-    setNewValue(initialState);
-  }, [priceList, newValue, initialState, itemToUpdate]);
-
-  const deleteItem = useCallback(
-    (item) => {
-      const idx = priceList.findIndex((f) => f === item);
-
-      const newItemList = [
-        ...priceList?.slice?.(0, idx),
-        ...priceList?.slice?.(idx + 1),
-      ];
-
-      setPriceList(newItemList);
-    },
-    [priceList]
-  );
-
   return (
     <div>
       {priceList.length > 0 &&
@@ -170,8 +105,6 @@ function PriceList() {
             <li>{item?.price}</li>
             <li>{item?.count}</li>
             <li>{item?.totalAmount}</li>
-            <button onClick={() => setUpdatedItem(item)}>Change</button>
-            <button onClick={() => deleteItem(item)}>Delete</button>
           </div>
         ))}
       <div>
@@ -194,11 +127,7 @@ function PriceList() {
           type="number"
         />
         <li></li>
-        {typeof itemToUpdate === 'number' ? (
-          <button onClick={changeValue}>Update</button>
-        ) : (
-          <button onClick={addNewItem}>Add</button>
-        )}
+        <button onClick={addNewItem}>Add</button>
       </div>
       <div>
         <li>Total</li>
