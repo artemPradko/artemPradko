@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './starWarsStarships.css';
 
 function StarshipPage() {
-  const [starshipId, setStarshipId] = useState(1);
+  const [starshipId, setStarshipId] = useState(2);
 
   const [starshipData, setStarshipData] = useState(null);
 
@@ -16,8 +16,20 @@ function StarshipPage() {
   const submit = useCallback(() => {
     async function getStarship(starShipId) {
       const response = await fetch(
-        `https://swapi.dev/api/starships/${starShipId}`
-      );
+        `http://localhost:8000/swapi/starship?starshipId=${starShipId}`,
+        {
+          method: 'post',
+          headers: {
+            'Access-Control-Allow-Origin': 'http://127.0.0.1:3000',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          },
+        }
+      ).catch((error) => {
+        console.error('fetch error ---', error);
+
+        return error;
+      });
 
       const data = await response.json();
       const imgData = `https://starwars-visualguide.com/assets/img/starships/${starShipId}.jpg`;
@@ -36,7 +48,7 @@ function StarshipPage() {
   }, [starshipId]);
 
   return (
-    <div>
+    <div className="root">
       <div className="s-s-heroIsRoot">
         <Link className="s-s-link" to="/">
           Back
@@ -56,7 +68,7 @@ function StarshipPage() {
       {starshipData && (
         <div className="s-s-descriptionAndImg">
           <div className="s-s-image">
-            <img src={starshipData?.image} alt="Planet Image" />
+            <img src={starshipData?.image} alt="Starship Image" />
           </div>
           <div className="s-s-descriptionContainer">
             <span className="s-s-name">{starshipData?.name}</span>

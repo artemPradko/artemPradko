@@ -1,0 +1,23 @@
+.root {
+    display: table-caption;
+}
+
+.registrationValuesRoot {
+    display: table-caption;
+}
+
+.registrationValues {
+    color: navajowhite;
+    border-radius: 9px;
+    margin-bottom: 6px;
+    display: table-caption;
+    font-size: larger;
+    border: orangered 3px solid;
+    font-weight: bold;
+    background: black;
+}
+
+.results {
+    color: aliceblue;
+    font-size: larger;
+}

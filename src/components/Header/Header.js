@@ -50,8 +50,15 @@ function Header() {
               <Link to="/testInJune">TestInJune</Link>
               <Link to="/starWarsPlanet">StarWarsPlanet</Link>
               <Link to="/starWarsStarships">StarWarsStarships</Link>
+              <Link to="/starWarsSpecie">StarWarsSpecie</Link>
+              <Link to="/starWarsVehicles">StarWarsVehicles</Link>
+              <Link to="/starWarsPeople">StarWarsPeople</Link>
               <Link to="/calculation">Calculation</Link>
             </div>
+          </div>
+          <div>
+            <Link to="/signUp">SignUp</Link>
+            <Link to="/signIn">/SignIn</Link>
           </div>
         </div>
       </div>
