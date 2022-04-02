@@ -28,6 +28,8 @@ import PriceList from '../pages/priceList/priceList';
 import SignUp from '../registration/signUp';
 import SignIn from '../registration/signIn';
 import ChangePassword from '../registration/changePassword';
+import ChangeEmail from '../registration/changeEmail';
+import ResetPassword from '../registration/resetPassword';
 
 function App() {
   return (
@@ -60,6 +62,8 @@ function App() {
         <Route path="/signUp" component={SignUp} />
         <Route path="/signIn" component={SignIn} />
         <Route path="/changePassword" component={ChangePassword} />
+        <Route path="/changeEmail" component={ChangeEmail} />
+        <Route path="/resetPassword" component={ResetPassword} />
       </Switch>
     </BrowserRouter>
   );

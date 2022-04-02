@@ -96,6 +96,9 @@ function SignInPage() {
       if (registration.status === 400) {
         setRegistrationState('Password incorrect');
       }
+      if (registration.status === 404) {
+        setRegistrationState('Email not correct');
+      }
 
       return registration;
     } catch (err) {
@@ -192,6 +195,13 @@ function SignInPage() {
       <button className="registrationValues" onClick={onSubmit}>
         Submit
       </button>
+      <Link
+        style={{ width: '229px' }}
+        className="registrationValues"
+        to="/resetPassword"
+      >
+        Forgot your password?
+      </Link>
       <h1 className="results">{registrationState}</h1>
       <button className="registrationValues" onClick={onClick}>
         Logout
@@ -204,6 +214,15 @@ function SignInPage() {
           to="/changePassword"
         >
           Change password
+        </Link>
+      )}
+      {isAuthorized && (
+        <Link
+          style={{ width: '140px' }}
+          className="registrationValues"
+          to="/changeEmail"
+        >
+          Change email
         </Link>
       )}
       <div>
